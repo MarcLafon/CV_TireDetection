@@ -12,8 +12,6 @@ Il faut également prédire le niveau d'usure des pneus quand le témoins est pr
 	- 25 images "Temoin100"
 	
 	
-![example](train_2.png)
-
 --> les labels sont dans des fichiers txt, ils sont stockés sous la forme : 
 		- ["Temoin50", [1532, 661, 2991, 2002]] s'il y a un Temoin dans l'image
 		- ["TemoinNone", [0, 0, 0, 0]] sinon
