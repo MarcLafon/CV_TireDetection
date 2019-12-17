@@ -29,10 +29,10 @@ Pipeline (à faire évoluer) :
 		- imaug : https://github.com/aleju/imgaug
 		
 	- Classification1 : TemoinNone vs Temoin
-		On prend un réseau pré-entrainé depuis torchvision (à voir lesquels on teste) et on réapprend sur les données augmentées
+		- Pre-trained torchvision network sur data augmentée
 	- Classification2 : TemoinNone vs Temoin + bounding boxe
-		On prend un réseau pré-entrainé depuis torchvision (à voir lesquels on teste) et on réapprend sur les données augmentées
+		- Pre-trained torchvision network sur data augmentée
 	- Classification3 : Temoin25 vs Temoin50 vs Temoin75 vs Temoin100 (pour les images qui ont un témoin)
-		- On prend un réseau pré-entrainé depuis torchvision (à voir lesquels on teste) et on réapprend sur les données augmentées
-		- Voir comment utiliser un Siamese Network pour faire la classif (One-Shot Learning)
+		- Pre-trained torchvision network sur data augmentée
+		- Siamese Network pour faire la classif en One-Shot Learning(?)
 	
