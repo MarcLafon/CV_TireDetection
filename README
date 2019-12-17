@@ -10,15 +10,22 @@ Il faut également prédire le niveau d'usure des pneus quand le témoins est pr
 	- 25 images "Temoin50"
 	- 25 images "Temoin75"
 	- 25 images "Temoin100"
-
+--> les labels sont dans des fichiers txt, ils sont stockés sous la forme : 
+		- ["Temoin50", [1532, 661, 2991, 2002]] s'il y a un Temoin dans l'image
+		- ["TemoinNone", [0, 0, 0, 0]] sinon
+		
 Une attention particulière sera porté sur les techniques de data augmentation utilisée.
 
 Pipeline (à faire évoluer) :
 	- Data Augmentation :
-		Repo/package de data augmentation à explorer :
+		
+		- data augmentation classique (géometrique, 
 		- AugMix : https://github.com/google-research/augmix
 		- Style Augmentation : https://github.com/philipjackson/style-augmentation
 		- imaug : https://github.com/aleju/imgaug
+		
+		
+		
 	- Classification1 : TemoinNone vs Temoin
 	- Classification2 : TemoinNone vs Temoin + bounding boxe
 	- Classification3 : Temoin25 vs Temoin50 vs Temoin75 vs Temoin100 (pour les images qui ont un témoin)
