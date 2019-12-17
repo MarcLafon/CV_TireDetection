@@ -1,0 +1,33 @@
+# All the pictures provided in this challenge are protected by copyright.
+# Reproduction and distribution of those pictures without permission of Michelin is prohibited
+
+*****************************
+ ** MICHELIN STARTING KIT **
+*****************************
+
+* Content
+
+A Dataset of 150 images to build and train your model.
+Two code samples that implement simple models to adress the problematic.
+A script that can help you test a model locally on the provided dataset.
+
+For example : python3 ./run_model.py sample_code_submission_RANDOM
+
+
+* Prerequisites
+
+Your environment must have Python 3.6 or superior and meet the following requirements:
+
+numpy==1.15
+pandas==0.23
+Pillow==5.3
+scikit-learn==0.20
+scipy==1.1
+tensorflow
+keras
+sporco==0.1.10
+torch
+opencv-python
+matplotlib
+
+

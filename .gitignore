@@ -1,6 +1,8 @@
+draft.ipynb
 *.zip
 training_dataset/
 data/
+*.pt
 
 .idea
 

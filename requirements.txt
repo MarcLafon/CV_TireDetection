@@ -1,0 +1,12 @@
+numpy==1.16.0
+pandas==0.23.0
+pillow==5.3.0
+scikit-learn==0.20.0
+scipy==1.1.0
+tensorflow==1.14.0
+keras==2.3.0
+sporco==0.1.10
+opencv-python==4.1.1.26
+matplotlib==3.1.2
+torch==1.2.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
