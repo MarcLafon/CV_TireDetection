@@ -18,6 +18,8 @@ Il faut également prédire le niveau d'usure des pneus quand le témoins est pr
 		
 Une attention particulière sera porté sur les techniques de data augmentation utilisée.
 
+Papier à lire : A survey on Image Data Augmentation for Deep Learning (https://link.springer.com/article/10.1186/s40537-019-0197-0)
+
 Pipeline (à faire évoluer) :
 	- Data Augmentation :
 		On va faire de la data augmentation offline : on créé un nouveau dataset augmenté.
@@ -26,10 +28,11 @@ Pipeline (à faire évoluer) :
 		- Style Augmentation : https://github.com/philipjackson/style-augmentation
 		- imaug : https://github.com/aleju/imgaug
 		
-		
-		
 	- Classification1 : TemoinNone vs Temoin
+		On prend un réseau pré-entrainé depuis torchvision (à voir lesquels on teste) et on réapprend sur les données augmentées
 	- Classification2 : TemoinNone vs Temoin + bounding boxe
+		On prend un réseau pré-entrainé depuis torchvision (à voir lesquels on teste) et on réapprend sur les données augmentées
 	- Classification3 : Temoin25 vs Temoin50 vs Temoin75 vs Temoin100 (pour les images qui ont un témoin)
-
+		- On prend un réseau pré-entrainé depuis torchvision (à voir lesquels on teste) et on réapprend sur les données augmentées
+		- Voir comment utiliser un Siamese Network pour faire la classif (One-Shot Learning)
 	
