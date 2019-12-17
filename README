@@ -1,33 +1,26 @@
-# All the pictures provided in this challenge are protected by copyright.
-# Reproduction and distribution of those pictures without permission of Michelin is prohibited
-
 *****************************
- ** MICHELIN STARTING KIT **
+ ** Challenge IA MICHELIN **
 *****************************
+L'objectifs de ce challenge est de développer un système permettant de détecter les témoins d'usures sur les pneus Michelin. 
+Il faut également prédire le niveau d'usure des pneus quand le témoins est présent dans l'image (25%, 50%, 75% et 100%).
 
-* Content
+150 images de pneus : 
+	- 50 images "TemoinNone"
+	- 25 images "Temoin25"
+	- 25 images "Temoin50"
+	- 25 images "Temoin75"
+	- 25 images "Temoin100"
 
-A Dataset of 150 images to build and train your model.
-Two code samples that implement simple models to adress the problematic.
-A script that can help you test a model locally on the provided dataset.
+Une attention particulière sera porté sur les techniques de data augmentation utilisée.
 
-For example : python3 ./run_model.py sample_code_submission_RANDOM
+Pipeline (à faire évoluer) :
+	- Data Augmentation :
+		Repo/package de data augmentation à explorer :
+		- AugMix : https://github.com/google-research/augmix
+		- Style Augmentation : https://github.com/philipjackson/style-augmentation
+		- imaug : https://github.com/aleju/imgaug
+	- Classification1 : TemoinNone vs Temoin
+	- Classification2 : TemoinNone vs Temoin + bounding boxe
+	- Classification3 : Temoin25 vs Temoin50 vs Temoin75 vs Temoin100 (pour les images qui ont un témoin)
 
-
-* Prerequisites
-
-Your environment must have Python 3.6 or superior and meet the following requirements:
-
-numpy==1.15
-pandas==0.23
-Pillow==5.3
-scikit-learn==0.20
-scipy==1.1
-tensorflow
-keras
-sporco==0.1.10
-torch
-opencv-python
-matplotlib
-
-
+	
