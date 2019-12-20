@@ -3,6 +3,7 @@ import argparse
 import sys
 import os
 import shutil
+import pathlib
 from utils import save_targets
 from torchvision import transforms
 from load import MichelinDataset, Data
@@ -100,22 +101,36 @@ def fivecrop(data_: Data, path: str, factor=1.5):
 if __name__ == "__main__":
     # ** Setting Up Parser ** #
     parser = argparse.ArgumentParser(description='Script performing data augmentation on Michelin dataset')
-    parser.add_argument('--param1', help='', default='default1')
-
+    parser.add_argument('--init', help='', action='store_true')
+    parser.add_argument('--path_raw_data', default="training_dataset")
     # ** Parsing arguments ** #
     sys.argv = [""]  # for debugging purpose, delete this line when the script is finished
     args = parser.parse_args()
-    param1 = args.param1
+    init = args.init
 
     # ** Code Starts Here **
-    path_raw_data = "training_dataset"
-    path_data_augment = "augmented_data"
+
+    try:
+        project_home = str(pathlib.Path(__file__).resolve().parent)
+    except NameError:
+        project_home = globals()['_dh'][0]
+
+    path_raw_data = os.path.join(project_home, "training_dataset")
+    path_data_augment = os.path.join(project_home, "augmented_data")
+
+    print(project_home)
+    print(path_raw_data)
+    print(path_data_augment)
+
     dataset = MichelinDataset(path_raw_data)
-    if path_data_augment not in os.listdir("."):
+
+    if pathlib.Path(path_data_augment).parts[-1] not in os.listdir(project_home):
         os.mkdir(path_data_augment)
-    for data in dataset:
-        shutil.copy(os.path.join(path_raw_data, data.img_id + ".jpg"),
-                    os.path.join(path_data_augment, data.img_id + ".jpg"))
-        shutil.copy(os.path.join(path_raw_data, data.img_id + ".txt"),
-                    os.path.join(path_data_augment, data.img_id + ".txt"))
-        fivecrop(data, path_data_augment, factor=1.5)
+
+    if init:
+        for data in dataset:
+            shutil.copy(os.path.join(path_raw_data, data.img_id + ".jpg"),
+                        os.path.join(path_data_augment, data.img_id + ".jpg"))
+            shutil.copy(os.path.join(path_raw_data, data.img_id + ".txt"),
+                        os.path.join(path_data_augment, data.img_id + ".txt"))
+            fivecrop(data, path_data_augment, factor=1.5)
