@@ -104,7 +104,7 @@ if __name__ == "__main__":
     parser.add_argument('--init', help='', action='store_true')
     parser.add_argument('--path_raw_data', default="training_dataset")
     # ** Parsing arguments ** #
-    sys.argv = [""]  # for debugging purpose, delete this line when the script is finished
+    #sys.argv = [""]  # for debugging purpose, delete this line when the script is finished
     args = parser.parse_args()
     init = args.init
 
