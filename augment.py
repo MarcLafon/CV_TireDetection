@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import argparse
-import sys
 import os
+import tqdm
 import shutil
 import pathlib
 from utils import save_targets
@@ -104,7 +104,7 @@ if __name__ == "__main__":
     parser.add_argument('--init', help='', action='store_true')
     parser.add_argument('--path_raw_data', default="training_dataset")
     # ** Parsing arguments ** #
-    #sys.argv = [""]  # for debugging purpose, delete this line when the script is finished
+    # sys.argv = [""]  # for debugging purpose, delete this line when the script is finished
     args = parser.parse_args()
     init = args.init
 
@@ -118,17 +118,13 @@ if __name__ == "__main__":
     path_raw_data = os.path.join(project_home, "training_dataset")
     path_data_augment = os.path.join(project_home, "augmented_data")
 
-    print(project_home)
-    print(path_raw_data)
-    print(path_data_augment)
-
     dataset = MichelinDataset(path_raw_data)
 
     if pathlib.Path(path_data_augment).parts[-1] not in os.listdir(project_home):
         os.mkdir(path_data_augment)
 
     if init:
-        for data in dataset:
+        for data in tqdm.tqdm(dataset):
             shutil.copy(os.path.join(path_raw_data, data.img_id + ".jpg"),
                         os.path.join(path_data_augment, data.img_id + ".jpg"))
             shutil.copy(os.path.join(path_raw_data, data.img_id + ".txt"),
