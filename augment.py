@@ -2,11 +2,11 @@
 import argparse
 import sys
 import os
-import numpy
+import shutil
 from utils import save_targets
 from torchvision import transforms
 from load import MichelinDataset, Data
-import imgaug.augmenters as iaa
+# import imgaug.augmenters as iaa
 from imgaug.augmentables.bbs import BoundingBox
 
 
@@ -65,36 +65,36 @@ def five_crop_bbx(position, bboxe, input_shape, output_shape):
     return _bboxe
 
 
-def fivecrop(data: Data, path: str, factor=1.5):
-    w, h = data.img.size
+def fivecrop(data_: Data, path: str, factor=1.5):
+    w, h = data_.img.size
     _w, _h = (int(w / factor), int(h / factor))
 
-    tpl_img, tpr_img, bl_img, br_img, center_img = transforms.FiveCrop((_h, _w))(data.img)
+    tpl_img, tpr_img, bl_img, br_img, center_img = transforms.FiveCrop((_h, _w))(data_.img)
 
     # Top left image
-    tpl_bbx = five_crop_bbx(0, data.bboxe, (w, h), (_w, _h))
-    tpl_img.save(os.path.join(path, "%s_tpl.jpg" % data.img_id))
-    save_targets(tpl_bbx, os.path.join(path, "%s_tpl.txt" % data.img_id))
+    tpl_bbx = five_crop_bbx(0, data_.bboxe, (w, h), (_w, _h))
+    tpl_img.save(os.path.join(path, "%s_tpl.jpg" % data_.img_id))
+    save_targets(tpl_bbx, os.path.join(path, "%s_tpl.txt" % data_.img_id))
 
     # Top right image
-    tpr_bbx = five_crop_bbx(1, data.bboxe, (w, h), (_w, _h))
-    tpr_img.save(os.path.join(path, "%s_tpr.jpg" % data.img_id))
-    save_targets(tpr_bbx, os.path.join(path, "%s_tpr.txt" % data.img_id))
+    tpr_bbx = five_crop_bbx(1, data_.bboxe, (w, h), (_w, _h))
+    tpr_img.save(os.path.join(path, "%s_tpr.jpg" % data_.img_id))
+    save_targets(tpr_bbx, os.path.join(path, "%s_tpr.txt" % data_.img_id))
 
     # Bottom left image
-    bl_bbx = five_crop_bbx(2, data.bboxe, (w, h), (_w, _h))
-    bl_img.save(os.path.join(path, "%s_bl.jpg" % data.img_id))
-    save_targets(bl_bbx, os.path.join(path, "/%s_bl.txt" % data.img_id))
+    bl_bbx = five_crop_bbx(2, data_.bboxe, (w, h), (_w, _h))
+    bl_img.save(os.path.join(path, "%s_bl.jpg" % data_.img_id))
+    save_targets(bl_bbx, os.path.join(path, "%s_bl.txt" % data_.img_id))
 
     # Bottom right image
-    br_bbx = five_crop_bbx(3, data.bboxe, (w, h), (_w, _h))
-    br_img.save(os.path.join(path, "%s_br.jpg" % data.img_id))
-    save_targets(br_bbx, os.path.join(path, "%s_br.txt" % data.img_id))
+    br_bbx = five_crop_bbx(3, data_.bboxe, (w, h), (_w, _h))
+    br_img.save(os.path.join(path, "%s_br.jpg" % data_.img_id))
+    save_targets(br_bbx, os.path.join(path, "%s_br.txt" % data_.img_id))
 
     # Center image
-    center_bbx = five_crop_bbx(4, data.bboxe, (w, h), (_w, _h))
-    center_img.save(os.path.join(path, "%s_center.jpg" % data.img_id))
-    save_targets(center_bbx, os.path.join(path, "%s_center.txt" % data.img_id))
+    center_bbx = five_crop_bbx(4, data_.bboxe, (w, h), (_w, _h))
+    center_img.save(os.path.join(path, "%s_center.jpg" % data_.img_id))
+    save_targets(center_bbx, os.path.join(path, "%s_center.txt" % data_.img_id))
 
 
 if __name__ == "__main__":
@@ -108,9 +108,14 @@ if __name__ == "__main__":
     param1 = args.param1
 
     # ** Code Starts Here **
-    dataset = MichelinDataset("training_dataset")
+    path_raw_data = "training_dataset"
     path_data_augment = "augmented_data"
+    dataset = MichelinDataset(path_raw_data)
     if path_data_augment not in os.listdir("."):
         os.mkdir(path_data_augment)
     for data in dataset:
+        shutil.copy(os.path.join(path_raw_data, data.img_id + ".jpg"),
+                    os.path.join(path_data_augment, data.img_id + ".jpg"))
+        shutil.copy(os.path.join(path_raw_data, data.img_id + ".txt"),
+                    os.path.join(path_data_augment, data.img_id + ".txt"))
         fivecrop(data, path_data_augment, factor=1.5)
