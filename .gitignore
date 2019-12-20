@@ -1,11 +1,14 @@
-draft.ipynb
+*.xlsx
+*.ipynb
 *.zip
 training_dataset/
 data/
 *.pt
-
+trash
 .idea
-
+already_zoomed_images.txt
+augmented_data
+data_scrapp
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

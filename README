@@ -4,7 +4,7 @@
 L'objectifs de ce challenge est de développer un système permettant de détecter les témoins d'usures sur les pneus Michelin. 
 Il faut également prédire le niveau d'usure des pneus quand le témoins est présent dans l'image (25%, 50%, 75% et 100%).
 
-150 images de pneus : 
+150 images de pneus :
 	- 50 images "TemoinNone"
 	- 25 images "Temoin25"
 	- 25 images "Temoin50"
@@ -15,7 +15,7 @@ Il faut également prédire le niveau d'usure des pneus quand le témoins est pr
 --> les labels sont dans des fichiers txt, ils sont stockés sous la forme : 
 		- ["Temoin50", [1532, 661, 2991, 2002]] s'il y a un Temoin dans l'image
 		- ["TemoinNone", [0, 0, 0, 0]] sinon
-		
+--> les images font toutes la meme taille : (width, length) = (4608, 3456) (très grosse résolution)
 Une attention particulière sera porté sur les techniques de data augmentation utilisée.
 
 Papier à lire : A survey on Image Data Augmentation for Deep Learning (https://link.springer.com/article/10.1186/s40537-019-0197-0)
