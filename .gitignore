@@ -1,14 +1,13 @@
 *.xlsx
+notebooks/
 *.ipynb
 *.zip
-training_dataset/
-data/
+data/*
+!data/put_training_dataset_here
 *.pt
 trash
 .idea
-already_zoomed_images.txt
-augmented_data
-data_scrapp
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
