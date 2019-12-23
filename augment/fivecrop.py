@@ -117,7 +117,7 @@ if __name__ == "__main__":
 
     path_raw_data = os.path.join(project_home, "data", "training_dataset")
     path_data_augment = os.path.join(project_home, "data", "data_fivecrop")
-    if "data_fivecrop" not in os.listdir(project_home):
+    if "data_fivecrop" not in os.listdir(os.path.join(project_home, "data")):
         os.mkdir(path_data_augment)
 
     main_fivecrop(path_raw_data, path_data_augment)
