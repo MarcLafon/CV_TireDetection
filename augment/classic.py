@@ -12,10 +12,6 @@ from imgaug.augmentables.bbs import BoundingBox, BoundingBoxesOnImage
 import numpy as np
 from torchvision.transforms import functional as F
 
-import inspect
-for l in inspect.getsourcelines(torch.from_numpy)[0]:
-    print(l.replace("\n",""))
-
 
 class CustomRandomErasing(transforms.RandomErasing):
 
