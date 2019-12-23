@@ -72,11 +72,13 @@ def main_classic(path_input, path_output):
     contrast = iaa.CLAHE(clip_limit=(2, 4), name="_contrast")
     noise = iaa.SaltAndPepper(0.1, per_channel=False, name="_noise")
     operations = [fliplr, flipud, rotate, erase, shear, convert2gray, rand_sat_hue, brigthen, contrast, noise]
-
+    resize = iaa.Resize({"height": 320, "width": 416})
     for data in dataset:
+        # raw_img, bboxe = resize(image=np.array(data.img), bounding_boxes=data.bboxe)
+        raw_img, bboxe = np.array(data.img), data.bboxe
         for i, operation in enumerate(operations):
             if np.random.rand() < 1:
-                aug_img, aug_bboxe = operation(image=np.array(data.img), bounding_boxes=data.bboxe)
+                aug_img, aug_bboxe = operation(image=raw_img, bounding_boxes=bboxe)
                 aug_img = ToPILImage()(aug_img)
                 aug_img.save(os.path.join(path_output, "%s%s.jpg" % (data.img_id, operation.name)))
                 save_targets(aug_bboxe, os.path.join(path_output, "%s%s.txt" % (data.img_id, operation.name)))
