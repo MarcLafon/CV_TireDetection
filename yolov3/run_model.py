@@ -251,12 +251,12 @@ def scoring ( ):
 
 # MAIN
 
-root_dir = "./"
+root_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
-input_dir = root_dir + "training_dataset"
-submission_dir = root_dir + "model"
-prediction_dir = root_dir + "results"
-score_dir = root_dir + "scoring"
+input_dir = os.path.join(root_dir, "training_dataset")
+submission_dir = os.path.join(root_dir, "model")
+prediction_dir = os.path.join(root_dir, "results")
+score_dir = os.path.join(root_dir, "scoring")
 
 if __name__ == "__main__":
     if len(sys.argv) == 1: # Use the default input and output directories if no arguments are provided

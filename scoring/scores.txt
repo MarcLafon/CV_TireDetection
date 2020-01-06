@@ -1,0 +1,2 @@
+prediction_score: 0.474000000000
+Duration: 0
