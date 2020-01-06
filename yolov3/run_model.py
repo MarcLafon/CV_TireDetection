@@ -253,7 +253,7 @@ def scoring ( ):
 
 root_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
-input_dir = os.path.join(root_dir, "training_dataset")
+input_dir = os.path.join(root_dir, "data", "training_dataset")
 submission_dir = os.path.join(root_dir, "model")
 prediction_dir = os.path.join(root_dir, "results")
 score_dir = os.path.join(root_dir, "scoring")
