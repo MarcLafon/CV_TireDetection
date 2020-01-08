@@ -1,5 +1,5 @@
 *.xlsx
-*.ipynb
+#*.ipynb
 *.zip
 training_dataset/
 data/
