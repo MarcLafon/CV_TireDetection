@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from imgaug.augmentables.bbs import BoundingBox
 import numpy as np
+import pandas as pd
 
 
 def targets2txt(bboxe: BoundingBox):
@@ -17,3 +18,8 @@ def extract_bboxe_img(img, bboxe: BoundingBox):
     raw_img, bboxe = np.array(img), bboxe
     x1, y1, w, h = bboxe.x1, bboxe.y1, bboxe.width, bboxe.height
     return raw_img[y1:y1 + h, x1:x1 + w, :]
+
+
+def load_folds_table(path_folds):
+    df = pd.read_csv(path_folds, sep=",")
+    return df
