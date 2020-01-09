@@ -76,6 +76,8 @@ def main_classic(path_input, path_output):
     for data in dataset:
         # raw_img, bboxe = resize(image=np.array(data.img), bounding_boxes=data.bboxe)
         raw_img, bboxe = np.array(data.img), data.bboxe
+        ToPILImage()(raw_img).save(os.path.join(path_output, "%s.jpg" % data.img_id))
+        save_targets(bboxe, os.path.join(path_output, "%s.txt" % data.img_id))
         for i, operation in enumerate(operations):
             if np.random.rand() < 1:
                 aug_img, aug_bboxe = operation(image=raw_img, bounding_boxes=bboxe)
