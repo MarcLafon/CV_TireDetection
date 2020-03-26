@@ -1,7 +1,7 @@
-*****************************
- ** Challenge IA MICHELIN **
-*****************************
-L'objectifs de ce challenge est de développer un système permettant de détecter les témoins d'usures sur les pneus Michelin. 
+**********************************
+ ** Challenge IA Tire Detection **
+**********************************
+L'objectifs de ce challenge est de développer un système permettant de détecter les témoins d'usures sur des pneus. 
 Il faut également prédire le niveau d'usure des pneus quand le témoins est présent dans l'image (25%, 50%, 75% et 100%).
 
 150 images de pneus :
@@ -36,4 +36,3 @@ Pipeline (à faire évoluer) :
 		- Pre-trained torchvision network sur data augmentée
 		- Siamese Network pour faire la classif en One-Shot Learning(?)
 	
-https://trello.com/b/ZvWFOjUT/challengeia
